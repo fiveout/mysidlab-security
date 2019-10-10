@@ -21,8 +21,8 @@
     - name:
       iam:
         iam_type: user
-        name: "{{ item.0.name }}"
+        name: "{{ item.name }}"
         state: present
-        groups: "{{ item.1 }}"
+        groups: "{{ item.aws_groups }}"
         password: "{{ sidpasswd }}"
-      loop: "{{ users|subelements('aws_groups') }}"
+      loop: "{{ users }}"
