@@ -1,5 +1,5 @@
 ---
-cities:
+aws_groups:
   - fresno
   - sacramento
   - losangeles
