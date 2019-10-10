@@ -11,7 +11,7 @@
       iam:
         iam_type: group
         name: "{{ item }}"
-        state: present
+        state: "{{ iam_opts.state }}"
 #       debug:
 #           msg: "Item is: {{ item }}"
       with_items: 
@@ -22,7 +22,7 @@
       iam:
         iam_type: user
         name: "{{ item.name }}"
-        state: present
+        state: "{{ iam_opts.state }}"
         groups: "{{ item.aws_groups }}"
         password: "{{ sidpasswd }}"
       loop: "{{ users }}"
