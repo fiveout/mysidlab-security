@@ -8,14 +8,14 @@
   gather_facts: False
   tasks:
     - name: Statefully manage IAM groups
-#       iam:
-#         iam_type: group
-#         name: "{{ item }}"
-#         state: present
-      debug:
-          msg: "Item is: {{ item }}"
+      iam:
+        iam_type: group
+        name: "{{ item }}"
+        state: present
+#       debug:
+#           msg: "Item is: {{ item }}"
       with_items: 
-        - "{{ cities }}"
+        - "{{ aws_groups }}"
       register: new_groups
 
     - name:
@@ -25,4 +25,4 @@
         state: present
         groups: "{{ item.1 }}"
         password: "{{ sidpasswd }}"
-      loop: "{{ users|subelements('groups') }}"
+      loop: "{{ users|subelements('aws_groups') }}"
