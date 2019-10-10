@@ -8,10 +8,12 @@
   gather_facts: False
   tasks:
     - name: Statefully manage IAM groups
-      iam:
-        iam_type: group
-        name: "{{ item }}"
-        state: present
+#       iam:
+#         iam_type: group
+#         name: "{{ item }}"
+#         state: present
+      debug:
+          msg: "Item is: {{ item }}"
       with_items: 
         - "{{ groups }}"
       register: new_groups
