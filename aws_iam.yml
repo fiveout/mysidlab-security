@@ -3,13 +3,9 @@
   vars_files:
     - 'vars/groups.yml'
     - 'vars/users.yml'
-  gather_facts: False
   vars:
-    keypair: us-jhooker-aws-admin
-    instance_type: t2.micro
-    security_group: ansible-security-group
-    image: ami-0520e698dd500b1d1
-    region: us-east-2
+    pass: "{{ password }}"
+  gather_facts: False
   tasks:
     - name: Statefully manage IAM groups
       iam:
@@ -25,4 +21,5 @@
         name: "{{ item.0.name }}"
         state: present
         groups: "{{ item.1 }}"
+        password: "{{ pass }}"
       loop: "{{ users|subelements('groups') }}"
