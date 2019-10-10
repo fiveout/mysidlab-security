@@ -12,7 +12,8 @@
         iam_type: group
         name: "{{ item }}"
         state: present
-      loop: "{{ groups }}"
+      with_items: 
+        - "{{ groups }}"
       register: new_groups
 
     - name:
