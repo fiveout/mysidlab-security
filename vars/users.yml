@@ -1,0 +1,8 @@
+---
+users:
+  - name: user1
+    groups: "sacramento, fresno, indio"
+  - name: user2
+    groups: "losangeles, sanfransisco, napa"
+  - name: user3
+    groups: "palmsprings, indio, sandiego"

@@ -1,0 +1,28 @@
+- name: Manage IAM users and groups
+  hosts: localhost
+  vars_files:
+    - 'vars/groups.yml'
+    - 'vars/users.yml'
+  gather_facts: False
+  vars:
+    keypair: us-jhooker-aws-admin
+    instance_type: t2.micro
+    security_group: ansible-security-group
+    image: ami-0520e698dd500b1d1
+    region: us-east-2
+  tasks:
+    - name: Statefully manage IAM groups
+      iam:
+        iam_type: group
+        name: "{{ item }}"
+        state: present
+      loop: "{{ groups }}"
+      register: new_groups
+
+    - name:
+      iam:
+        iam_type: user
+        name: "{{ item.0.name }}"
+        state: present
+        groups: "{{ item.1 }}"
+      loop: "{{ users|subelements('groups') }}"
