@@ -15,7 +15,7 @@
       debug:
           msg: "Item is: {{ item }}"
       with_items: 
-        - "{{ groups }}"
+        - "{{ cities }}"
       register: new_groups
 
     - name:
