@@ -3,6 +3,6 @@ users:
   - name: user1
     aws_groups: "sacramento, fresno, indio"
   - name: user2
-    aws_groups: "losangeles, sanfransisco, napa"
+    aws_groups: "losangeles, sanfrancisco, napa"
   - name: user3
     aws_groups: "palmsprings, indio, sandiego"
